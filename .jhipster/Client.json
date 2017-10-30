@@ -1,0 +1,51 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "first_name",
+            "fieldType": "String",
+            "fieldValidateRules": [
+                "minlength",
+                "maxlength"
+            ],
+            "fieldValidateRulesMinlength": "3",
+            "fieldValidateRulesMaxlength": "42"
+        },
+        {
+            "fieldName": "last_name",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "name",
+            "fieldType": "String"
+        },
+        {
+          "fieldName": "NIP",
+          "fieldType": "string"
+        },
+        {
+          "fieldName": "PESEL",
+          "fieldType": "string"
+        },
+        {
+          "fieldName": "phone_home",
+          "fieldType": "string"
+        },
+        {
+          "fieldName": "phone_work",
+          "fieldType": "string"
+        },
+        {
+          "fieldName": "birthdate",
+          "fieldType": "date"
+        },
+
+    ],
+    "changelogDate": "20171029233346",
+    "dto": "no",
+    "service": "serviceClass",
+    "entityTableName": "client",
+    "jpaMetamodelFiltering": false,
+    "pagination": "pager"
+}

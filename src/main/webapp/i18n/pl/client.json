@@ -1,0 +1,23 @@
+{
+    "jCrmApp": {
+        "client" : {
+            "home": {
+                "title": "Clients",
+                "createLabel": "Dodaj Client",
+                "createOrEditLabel": "Dodaj lub edytuj: Client"
+            },
+            "created": "Utworzono nowy Client z identyfikatorem {{ param }}",
+            "updated": "Uaktualniono Client z identyfikatorem {{ param }}",
+            "deleted": "Usunięto Client z identyfikatorem {{ param }}",
+            "delete": {
+                "question": "Czy na pewno chcesz usunąć Client {{ id }}?"
+            },
+            "detail": {
+                "title": "Client"
+            },
+            "first_name": "First Name",
+            "last_name": "Last Name",
+            "name": "Name"
+        }
+    }
+}
