@@ -15,9 +15,13 @@
             "detail": {
                 "title": "Client"
             },
-            "first_name": "First Name",
+            "name": "Name",
+            "birthdate": "Birthdate",
             "last_name": "Last Name",
-            "name": "Name"
+            "NIP": "NIP",
+            "PESEL": "PESEL",
+            "phone_home": "Phone Home",
+            "phone_work": "Phone Work"
         }
     }
 }

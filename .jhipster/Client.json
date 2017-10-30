@@ -3,7 +3,7 @@
     "relationships": [],
     "fields": [
         {
-            "fieldName": "first_name",
+            "fieldName": "name",
             "fieldType": "String",
             "fieldValidateRules": [
                 "minlength",
@@ -13,36 +13,31 @@
             "fieldValidateRulesMaxlength": "42"
         },
         {
+            "fieldName": "birthdate",
+            "fieldType": "LocalDate"
+        },
+        {
             "fieldName": "last_name",
             "fieldType": "String"
         },
         {
-            "fieldName": "name",
+            "fieldName": "NIP",
             "fieldType": "String"
         },
         {
-          "fieldName": "NIP",
-          "fieldType": "string"
+            "fieldName": "PESEL",
+            "fieldType": "String"
         },
         {
-          "fieldName": "PESEL",
-          "fieldType": "string"
+            "fieldName": "phone_home",
+            "fieldType": "String"
         },
         {
-          "fieldName": "phone_home",
-          "fieldType": "string"
-        },
-        {
-          "fieldName": "phone_work",
-          "fieldType": "string"
-        },
-        {
-          "fieldName": "birthdate",
-          "fieldType": "date"
-        },
-
+            "fieldName": "phone_work",
+            "fieldType": "String"
+        }
     ],
-    "changelogDate": "20171029233346",
+    "changelogDate": "20171030004011",
     "dto": "no",
     "service": "serviceClass",
     "entityTableName": "client",

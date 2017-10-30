@@ -4,17 +4,33 @@
     <hr>
     <jhi-alert-error></jhi-alert-error>
     <dl class="dl-horizontal jh-entity-details">
-        <dt><span data-translate="jCrmApp.client.first_name">First Name</span></dt>
+        <dt><span data-translate="jCrmApp.client.name">Name</span></dt>
         <dd>
-            <span>{{vm.client.first_name}}</span>
+            <span>{{vm.client.name}}</span>
+        </dd>
+        <dt><span data-translate="jCrmApp.client.birthdate">Birthdate</span></dt>
+        <dd>
+            <span>{{vm.client.birthdate | date:'mediumDate'}}</span>
         </dd>
         <dt><span data-translate="jCrmApp.client.last_name">Last Name</span></dt>
         <dd>
             <span>{{vm.client.last_name}}</span>
         </dd>
-        <dt><span data-translate="jCrmApp.client.name">Name</span></dt>
+        <dt><span data-translate="jCrmApp.client.NIP">NIP</span></dt>
         <dd>
-            <span>{{vm.client.name}}</span>
+            <span>{{vm.client.NIP}}</span>
+        </dd>
+        <dt><span data-translate="jCrmApp.client.PESEL">PESEL</span></dt>
+        <dd>
+            <span>{{vm.client.PESEL}}</span>
+        </dd>
+        <dt><span data-translate="jCrmApp.client.phone_home">Phone Home</span></dt>
+        <dd>
+            <span>{{vm.client.phone_home}}</span>
+        </dd>
+        <dt><span data-translate="jCrmApp.client.phone_work">Phone Work</span></dt>
+        <dd>
+            <span>{{vm.client.phone_work}}</span>
         </dd>
     </dl>
 

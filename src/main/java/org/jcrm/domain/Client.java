@@ -4,6 +4,7 @@ package org.jcrm.domain;
 import javax.persistence.*;
 import javax.validation.constraints.*;
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.Objects;
 
 /**
@@ -20,14 +21,26 @@ public class Client implements Serializable {
     private Long id;
 
     @Size(min = 3, max = 42)
-    @Column(name = "first_name", length = 42)
-    private String first_name;
+    @Column(name = "name", length = 42)
+    private String name;
+
+    @Column(name = "birthdate")
+    private LocalDate birthdate;
 
     @Column(name = "last_name")
     private String last_name;
 
-    @Column(name = "name")
-    private String name;
+    @Column(name = "nip")
+    private String NIP;
+
+    @Column(name = "pesel")
+    private String PESEL;
+
+    @Column(name = "phone_home")
+    private String phone_home;
+
+    @Column(name = "phone_work")
+    private String phone_work;
 
     // jhipster-needle-entity-add-field - Jhipster will add fields here, do not remove
     public Long getId() {
@@ -38,17 +51,30 @@ public class Client implements Serializable {
         this.id = id;
     }
 
-    public String getFirst_name() {
-        return first_name;
+    public String getName() {
+        return name;
     }
 
-    public Client first_name(String first_name) {
-        this.first_name = first_name;
+    public Client name(String name) {
+        this.name = name;
         return this;
     }
 
-    public void setFirst_name(String first_name) {
-        this.first_name = first_name;
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public LocalDate getBirthdate() {
+        return birthdate;
+    }
+
+    public Client birthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
+        return this;
+    }
+
+    public void setBirthdate(LocalDate birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getLast_name() {
@@ -64,17 +90,56 @@ public class Client implements Serializable {
         this.last_name = last_name;
     }
 
-    public String getName() {
-        return name;
+    public String getNIP() {
+        return NIP;
     }
 
-    public Client name(String name) {
-        this.name = name;
+    public Client NIP(String NIP) {
+        this.NIP = NIP;
         return this;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNIP(String NIP) {
+        this.NIP = NIP;
+    }
+
+    public String getPESEL() {
+        return PESEL;
+    }
+
+    public Client PESEL(String PESEL) {
+        this.PESEL = PESEL;
+        return this;
+    }
+
+    public void setPESEL(String PESEL) {
+        this.PESEL = PESEL;
+    }
+
+    public String getPhone_home() {
+        return phone_home;
+    }
+
+    public Client phone_home(String phone_home) {
+        this.phone_home = phone_home;
+        return this;
+    }
+
+    public void setPhone_home(String phone_home) {
+        this.phone_home = phone_home;
+    }
+
+    public String getPhone_work() {
+        return phone_work;
+    }
+
+    public Client phone_work(String phone_work) {
+        this.phone_work = phone_work;
+        return this;
+    }
+
+    public void setPhone_work(String phone_work) {
+        this.phone_work = phone_work;
     }
     // jhipster-needle-entity-add-getters-setters - Jhipster will add getters and setters here, do not remove
 
@@ -102,9 +167,13 @@ public class Client implements Serializable {
     public String toString() {
         return "Client{" +
             "id=" + getId() +
-            ", first_name='" + getFirst_name() + "'" +
-            ", last_name='" + getLast_name() + "'" +
             ", name='" + getName() + "'" +
+            ", birthdate='" + getBirthdate() + "'" +
+            ", last_name='" + getLast_name() + "'" +
+            ", NIP='" + getNIP() + "'" +
+            ", PESEL='" + getPESEL() + "'" +
+            ", phone_home='" + getPhone_home() + "'" +
+            ", phone_work='" + getPhone_work() + "'" +
             "}";
     }
 }

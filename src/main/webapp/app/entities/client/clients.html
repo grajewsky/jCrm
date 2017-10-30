@@ -19,18 +19,26 @@
             <thead>
                 <tr jh-sort="vm.predicate" ascending="vm.reverse" callback="vm.transition()">
                     <th jh-sort-by="id"><span data-translate="global.field.id">ID</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="first_name"><span data-translate="jCrmApp.client.first_name">First Name</span> <span class="glyphicon glyphicon-sort"></span></th>
-                    <th jh-sort-by="last_name"><span data-translate="jCrmApp.client.last_name">Last Name</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th jh-sort-by="name"><span data-translate="jCrmApp.client.name">Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="birthdate"><span data-translate="jCrmApp.client.birthdate">Birthdate</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="last_name"><span data-translate="jCrmApp.client.last_name">Last Name</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="NIP"><span data-translate="jCrmApp.client.NIP">NIP</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="PESEL"><span data-translate="jCrmApp.client.PESEL">PESEL</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="phone_home"><span data-translate="jCrmApp.client.phone_home">Phone Home</span> <span class="glyphicon glyphicon-sort"></span></th>
+                    <th jh-sort-by="phone_work"><span data-translate="jCrmApp.client.phone_work">Phone Work</span> <span class="glyphicon glyphicon-sort"></span></th>
                     <th></th>
                 </tr>
             </thead>
             <tbody>
                 <tr ng-repeat="client in vm.clients track by client.id">
                     <td><a ui-sref="client-detail({id:client.id})">{{client.id}}</a></td>
-                    <td>{{client.first_name}}</td>
-                    <td>{{client.last_name}}</td>
                     <td>{{client.name}}</td>
+                        <td>{{client.birthdate | date:'mediumDate'}}</td>
+                    <td>{{client.last_name}}</td>
+                    <td>{{client.NIP}}</td>
+                    <td>{{client.PESEL}}</td>
+                    <td>{{client.phone_home}}</td>
+                    <td>{{client.phone_work}}</td>
                     <td class="text-right">
                         <div class="btn-group flex-btn-group-container">
                             <button type="submit"

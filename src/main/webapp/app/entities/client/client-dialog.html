@@ -14,20 +14,30 @@
                     ng-model="vm.client.id" readonly />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="jCrmApp.client.first_name" for="field_first_name">First Name</label>
-            <input type="text" class="form-control" name="first_name" id="field_first_name"
-                    ng-model="vm.client.first_name"
+            <label class="control-label" data-translate="jCrmApp.client.name" for="field_name">Name</label>
+            <input type="text" class="form-control" name="name" id="field_name"
+                    ng-model="vm.client.name"
                     ng-minlength="3" ng-maxlength="42"/>
-            <div ng-show="editForm.first_name.$invalid">
+            <div ng-show="editForm.name.$invalid">
                 <p class="help-block"
-                    ng-show="editForm.first_name.$error.minlength" data-translate="entity.validation.minlength" translate-value-min="3">
+                    ng-show="editForm.name.$error.minlength" data-translate="entity.validation.minlength" translate-value-min="3">
                     This field is required to be at least 3 characters.
                 </p>
                 <p class="help-block"
-                    ng-show="editForm.first_name.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="42">
+                    ng-show="editForm.name.$error.maxlength" data-translate="entity.validation.maxlength" translate-value-max="42">
                     This field cannot be longer than 42 characters.
                 </p>
             </div>
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="jCrmApp.client.birthdate" for="field_birthdate">Birthdate</label>
+                <div class="input-group">
+                    <input id="field_birthdate" type="text" class="form-control" name="birthdate" uib-datepicker-popup="{{dateformat}}" ng-model="vm.client.birthdate" is-open="vm.datePickerOpenStatus.birthdate"
+                    />
+                    <span class="input-group-btn">
+                        <button type="button" class="btn btn-default" ng-click="vm.openCalendar('birthdate')"><i class="glyphicon glyphicon-calendar"></i></button>
+                    </span>
+                </div>
         </div>
         <div class="form-group">
             <label class="control-label" data-translate="jCrmApp.client.last_name" for="field_last_name">Last Name</label>
@@ -36,9 +46,27 @@
                     />
         </div>
         <div class="form-group">
-            <label class="control-label" data-translate="jCrmApp.client.name" for="field_name">Name</label>
-            <input type="text" class="form-control" name="name" id="field_name"
-                    ng-model="vm.client.name"
+            <label class="control-label" data-translate="jCrmApp.client.NIP" for="field_NIP">NIP</label>
+            <input type="text" class="form-control" name="NIP" id="field_NIP"
+                    ng-model="vm.client.NIP"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="jCrmApp.client.PESEL" for="field_PESEL">PESEL</label>
+            <input type="text" class="form-control" name="PESEL" id="field_PESEL"
+                    ng-model="vm.client.PESEL"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="jCrmApp.client.phone_home" for="field_phone_home">Phone Home</label>
+            <input type="text" class="form-control" name="phone_home" id="field_phone_home"
+                    ng-model="vm.client.phone_home"
+                    />
+        </div>
+        <div class="form-group">
+            <label class="control-label" data-translate="jCrmApp.client.phone_work" for="field_phone_work">Phone Work</label>
+            <input type="text" class="form-control" name="phone_work" id="field_phone_work"
+                    ng-model="vm.client.phone_work"
                     />
         </div>
 

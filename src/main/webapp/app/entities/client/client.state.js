@@ -124,9 +124,13 @@
                     resolve: {
                         entity: function () {
                             return {
-                                first_name: null,
-                                last_name: null,
                                 name: null,
+                                birthdate: null,
+                                last_name: null,
+                                NIP: null,
+                                PESEL: null,
+                                phone_home: null,
+                                phone_work: null,
                                 id: null
                             };
                         }

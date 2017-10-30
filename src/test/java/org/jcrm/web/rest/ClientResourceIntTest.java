@@ -22,6 +22,8 @@ import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.List;
 
 import static org.assertj.core.api.Assertions.assertThat;
@@ -38,14 +40,26 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @SpringBootTest(classes = JCrmApp.class)
 public class ClientResourceIntTest {
 
-    private static final String DEFAULT_FIRST_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_FIRST_NAME = "BBBBBBBBBB";
+    private static final String DEFAULT_NAME = "AAAAAAAAAA";
+    private static final String UPDATED_NAME = "BBBBBBBBBB";
+
+    private static final LocalDate DEFAULT_BIRTHDATE = LocalDate.ofEpochDay(0L);
+    private static final LocalDate UPDATED_BIRTHDATE = LocalDate.now(ZoneId.systemDefault());
 
     private static final String DEFAULT_LAST_NAME = "AAAAAAAAAA";
     private static final String UPDATED_LAST_NAME = "BBBBBBBBBB";
 
-    private static final String DEFAULT_NAME = "AAAAAAAAAA";
-    private static final String UPDATED_NAME = "BBBBBBBBBB";
+    private static final String DEFAULT_NIP = "AAAAAAAAAA";
+    private static final String UPDATED_NIP = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PESEL = "AAAAAAAAAA";
+    private static final String UPDATED_PESEL = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PHONE_HOME = "AAAAAAAAAA";
+    private static final String UPDATED_PHONE_HOME = "BBBBBBBBBB";
+
+    private static final String DEFAULT_PHONE_WORK = "AAAAAAAAAA";
+    private static final String UPDATED_PHONE_WORK = "BBBBBBBBBB";
 
     @Autowired
     private ClientRepository clientRepository;
@@ -87,9 +101,13 @@ public class ClientResourceIntTest {
      */
     public static Client createEntity(EntityManager em) {
         Client client = new Client()
-            .first_name(DEFAULT_FIRST_NAME)
+            .name(DEFAULT_NAME)
+            .birthdate(DEFAULT_BIRTHDATE)
             .last_name(DEFAULT_LAST_NAME)
-            .name(DEFAULT_NAME);
+            .NIP(DEFAULT_NIP)
+            .PESEL(DEFAULT_PESEL)
+            .phone_home(DEFAULT_PHONE_HOME)
+            .phone_work(DEFAULT_PHONE_WORK);
         return client;
     }
 
@@ -113,9 +131,13 @@ public class ClientResourceIntTest {
         List<Client> clientList = clientRepository.findAll();
         assertThat(clientList).hasSize(databaseSizeBeforeCreate + 1);
         Client testClient = clientList.get(clientList.size() - 1);
-        assertThat(testClient.getFirst_name()).isEqualTo(DEFAULT_FIRST_NAME);
-        assertThat(testClient.getLast_name()).isEqualTo(DEFAULT_LAST_NAME);
         assertThat(testClient.getName()).isEqualTo(DEFAULT_NAME);
+        assertThat(testClient.getBirthdate()).isEqualTo(DEFAULT_BIRTHDATE);
+        assertThat(testClient.getLast_name()).isEqualTo(DEFAULT_LAST_NAME);
+        assertThat(testClient.getNIP()).isEqualTo(DEFAULT_NIP);
+        assertThat(testClient.getPESEL()).isEqualTo(DEFAULT_PESEL);
+        assertThat(testClient.getPhone_home()).isEqualTo(DEFAULT_PHONE_HOME);
+        assertThat(testClient.getPhone_work()).isEqualTo(DEFAULT_PHONE_WORK);
     }
 
     @Test
@@ -148,9 +170,13 @@ public class ClientResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.[*].id").value(hasItem(client.getId().intValue())))
-            .andExpect(jsonPath("$.[*].first_name").value(hasItem(DEFAULT_FIRST_NAME.toString())))
+            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())))
+            .andExpect(jsonPath("$.[*].birthdate").value(hasItem(DEFAULT_BIRTHDATE.toString())))
             .andExpect(jsonPath("$.[*].last_name").value(hasItem(DEFAULT_LAST_NAME.toString())))
-            .andExpect(jsonPath("$.[*].name").value(hasItem(DEFAULT_NAME.toString())));
+            .andExpect(jsonPath("$.[*].NIP").value(hasItem(DEFAULT_NIP.toString())))
+            .andExpect(jsonPath("$.[*].PESEL").value(hasItem(DEFAULT_PESEL.toString())))
+            .andExpect(jsonPath("$.[*].phone_home").value(hasItem(DEFAULT_PHONE_HOME.toString())))
+            .andExpect(jsonPath("$.[*].phone_work").value(hasItem(DEFAULT_PHONE_WORK.toString())));
     }
 
     @Test
@@ -164,9 +190,13 @@ public class ClientResourceIntTest {
             .andExpect(status().isOk())
             .andExpect(content().contentType(MediaType.APPLICATION_JSON_UTF8_VALUE))
             .andExpect(jsonPath("$.id").value(client.getId().intValue()))
-            .andExpect(jsonPath("$.first_name").value(DEFAULT_FIRST_NAME.toString()))
+            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()))
+            .andExpect(jsonPath("$.birthdate").value(DEFAULT_BIRTHDATE.toString()))
             .andExpect(jsonPath("$.last_name").value(DEFAULT_LAST_NAME.toString()))
-            .andExpect(jsonPath("$.name").value(DEFAULT_NAME.toString()));
+            .andExpect(jsonPath("$.NIP").value(DEFAULT_NIP.toString()))
+            .andExpect(jsonPath("$.PESEL").value(DEFAULT_PESEL.toString()))
+            .andExpect(jsonPath("$.phone_home").value(DEFAULT_PHONE_HOME.toString()))
+            .andExpect(jsonPath("$.phone_work").value(DEFAULT_PHONE_WORK.toString()));
     }
 
     @Test
@@ -188,9 +218,13 @@ public class ClientResourceIntTest {
         // Update the client
         Client updatedClient = clientRepository.findOne(client.getId());
         updatedClient
-            .first_name(UPDATED_FIRST_NAME)
+            .name(UPDATED_NAME)
+            .birthdate(UPDATED_BIRTHDATE)
             .last_name(UPDATED_LAST_NAME)
-            .name(UPDATED_NAME);
+            .NIP(UPDATED_NIP)
+            .PESEL(UPDATED_PESEL)
+            .phone_home(UPDATED_PHONE_HOME)
+            .phone_work(UPDATED_PHONE_WORK);
 
         restClientMockMvc.perform(put("/api/clients")
             .contentType(TestUtil.APPLICATION_JSON_UTF8)
@@ -201,9 +235,13 @@ public class ClientResourceIntTest {
         List<Client> clientList = clientRepository.findAll();
         assertThat(clientList).hasSize(databaseSizeBeforeUpdate);
         Client testClient = clientList.get(clientList.size() - 1);
-        assertThat(testClient.getFirst_name()).isEqualTo(UPDATED_FIRST_NAME);
-        assertThat(testClient.getLast_name()).isEqualTo(UPDATED_LAST_NAME);
         assertThat(testClient.getName()).isEqualTo(UPDATED_NAME);
+        assertThat(testClient.getBirthdate()).isEqualTo(UPDATED_BIRTHDATE);
+        assertThat(testClient.getLast_name()).isEqualTo(UPDATED_LAST_NAME);
+        assertThat(testClient.getNIP()).isEqualTo(UPDATED_NIP);
+        assertThat(testClient.getPESEL()).isEqualTo(UPDATED_PESEL);
+        assertThat(testClient.getPhone_home()).isEqualTo(UPDATED_PHONE_HOME);
+        assertThat(testClient.getPhone_work()).isEqualTo(UPDATED_PHONE_WORK);
     }
 
     @Test
